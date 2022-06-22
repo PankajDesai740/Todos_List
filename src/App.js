@@ -1,32 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header';
+import { Footer } from './Components/Footer';
+import { TodosList } from './Components/TodosList';
+import { Todo } from './Components/Todo';
+import { useState } from 'react';
 
 function App() {
+  const onDelete = (todo) =>{
+    console.log("Delete",todo);
+
+    setTodos(todos.filter((e)=>{
+      return e!==todo;
+
+    }));
+  }
+   const [todos, setTodos] = useState([
+    {
+      sno:1,
+      title:" DSA Time",
+      desc: "Learn C++ and solve Problems in it "
+    },
+    {
+      sno:2,
+      title:" Development Time",
+      desc: " Create React app "
+    },
+    {
+    sno:3,
+    title:" College Time",
+    desc: "Write Assigments of Ml"
+    }
+
+  ]);
   return (
      <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">ToDo'S</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">About</a>
-              </li>
-              </ul>
-             
-            <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+     <Header title="ToDo'S" searchBar={false}/>
+     <TodosList todos={todos} onDelete={onDelete}/>
+ 
+      <Footer/>
+
   
       </>
   );
