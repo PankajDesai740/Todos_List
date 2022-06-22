@@ -7,41 +7,41 @@ import { Todo } from './Components/Todo';
 import { useState } from 'react';
 
 function App() {
-  const onDelete = (todo) =>{
-    console.log("Delete",todo);
+  const onDelete = (todo) => {
+    console.log("Delete", todo);
 
-    setTodos(todos.filter((e)=>{
-      return e!==todo;
+    setTodos(todos.filter((e) => {
+      return e !== todo;
 
     }));
   }
-   const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState([
     {
-      sno:1,
-      title:" DSA Time",
+      sno: 1,
+      title: " DSA Time",
       desc: "Learn C++ and solve Problems in it "
     },
     {
-      sno:2,
-      title:" Development Time",
+      sno: 2,
+      title: " Development Time",
       desc: " Create React app "
     },
     {
-    sno:3,
-    title:" College Time",
-    desc: "Write Assigments of Ml"
+      sno: 3,
+      title: " College Time",
+      desc: "Write Assigments of Ml"
     }
 
   ]);
   return (
-     <>
-     <Header title="ToDo'S" searchBar={false}/>
-     <TodosList todos={todos} onDelete={onDelete}/>
- 
-      <Footer/>
+    <>
+      <Header title="ToDo'S" searchBar={false} />
+      <TodosList todos={todos} onDelete={onDelete} />
 
-  
-      </>
+      <Footer />
+
+
+    </>
   );
 }
 
