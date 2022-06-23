@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header';
 import { Footer } from './Components/Footer';
 import { TodosList } from './Components/TodosList';
-import { Todo } from './Components/Todo';
+import { AddTodo } from './Components/AddTodo';
 import { useState } from 'react';
+
+
 
 function App() {
   const onDelete = (todo) => {
@@ -14,6 +15,25 @@ function App() {
       return e !== todo;
 
     }));
+  }
+  // add todo
+  const addTodo = (title, desc) => {
+
+    let sno;
+    if (todos.length === 0) {
+      sno = 0;
+    }
+    else {
+      sno = todos[todos.length - 1].sno + 1;
+    }
+    console.log("Add todo", title, desc)
+    const myTodo = {
+      sno: sno,
+      title: title,
+      desc: desc
+    }
+    setTodos([...todos, myTodo]);
+    console.log(myTodo);
   }
   const [todos, setTodos] = useState([
     {
@@ -36,6 +56,7 @@ function App() {
   return (
     <>
       <Header title="ToDo'S" searchBar={false} />
+      <AddTodo addTodo={addTodo} />
       <TodosList todos={todos} onDelete={onDelete} />
 
       <Footer />
