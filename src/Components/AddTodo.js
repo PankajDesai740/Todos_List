@@ -9,8 +9,11 @@ export const AddTodo = ({addTodo}) => {
     if(!title || !desc){
       alert("Title or description can't be blank");
     }
+    else{
     addTodo(title,desc);
-
+    setTitle("");
+    setdesc("");
+    }
   }
 
   return (
